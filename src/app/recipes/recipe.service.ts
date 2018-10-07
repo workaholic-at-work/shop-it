@@ -1,11 +1,12 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter, Output, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class RecipeService {
-    recipeSelected = new EventEmitter<Recipe>();
+    recipeSelected = new Subject<Recipe>();
     private recipes: Recipe[] = [
         new Recipe('Big Burger', 'All delecious!!',
             'https://amp.businessinsider.com/images/5a7dc169d03072af008b4bf2-750-562.jpg',
@@ -28,8 +29,8 @@ export class RecipeService {
         return this.recipes.slice();
     }
 
-    selectRecipe(recipe: Recipe) {
-        this.recipeSelected.emit(recipe);
+    getRecipe(id: number): Recipe {
+        return this.recipes[id];
     }
 
     addIngreientsToShoppingList(ingredients: Ingredient[]) {
