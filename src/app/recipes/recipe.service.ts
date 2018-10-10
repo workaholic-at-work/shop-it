@@ -6,7 +6,6 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class RecipeService {
-    recipeSelected = new Subject<Recipe>();
     private recipes: Recipe[] = [
         new Recipe('Big Burger', 'All delecious!!',
             'https://amp.businessinsider.com/images/5a7dc169d03072af008b4bf2-750-562.jpg',

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +15,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRouteModule } from './app-route.module';
 import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
+import { MinlengthValidatorDirective } from './shared/minlength-validator.directive';
 
 @NgModule({
   declarations: [
@@ -27,10 +29,13 @@ import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component
     RecipeItemComponent,
     DropdownDirective,
     SelectRecipeComponent,
-    EditRecipeComponent
+    EditRecipeComponent,
+    MinlengthValidatorDirective
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRouteModule
   ],
   providers: [ShoppingListService],
