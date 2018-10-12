@@ -16,6 +16,7 @@ import { AppRouteModule } from './app-route.module';
 import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { MinlengthValidatorDirective } from './shared/minlength-validator.directive';
+import { RecipeService } from './recipes/recipe.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { MinlengthValidatorDirective } from './shared/minlength-validator.direct
     ReactiveFormsModule,
     AppRouteModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
