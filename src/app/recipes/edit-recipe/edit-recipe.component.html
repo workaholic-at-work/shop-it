@@ -53,6 +53,25 @@
           </div>
         </div>
       </div>
+      <div class="row" formArrayName="ingredientsArray">
+        <div class="col-xs-12" *ngFor="let control of recipeForm.get('ingredientsArray').controls; let i = index">
+         <div class="row" [formGroupName]="i">
+           <div class="col-xs-8">
+             <input class="form-control" type="text" formControlName="name" />
+             <span class="help-text" *ngIf="!recipeForm.get('ingredientsArray').controls[i].controls.name.valid
+             && recipeForm.get('ingredientsArray').controls[i].controls.name.touched">Ingredient name is required!</span>
+           </div>
+           <div class="col-xs-2">
+            <input class="form-control" type="number" formControlName="amount" />
+            <span class="help-text" *ngIf="!recipeForm.get('ingredientsArray').controls[i].controls.amount.valid
+            && recipeForm.get('ingredientsArray').controls[i].controls.amount.touched">Ingredient amount is required!</span>
+          </div>
+          <div class="col-xs-2">
+            <button class="btn btn-danger">X</button>
+          </div>
+         </div>
+        </div>
+      </div>
     </form>
   </div>
 </div>
