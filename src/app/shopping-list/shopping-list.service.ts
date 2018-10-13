@@ -1,5 +1,6 @@
 import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs/Subject';
+import { HttpClient } from '@angular/common/http';
 
 export class ShoppingListService {
     ingredientsChanged = new Subject<Ingredient[]>();
