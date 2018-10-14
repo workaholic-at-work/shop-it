@@ -18,7 +18,9 @@ import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.com
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { MinlengthValidatorDirective } from './shared/minlength-validator.directive';
 import { RecipeService } from './recipes/recipe.service';
-import { MessageComponent } from './message/message.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { MessageComponent } from './message/message.component';
     SelectRecipeComponent,
     EditRecipeComponent,
     MinlengthValidatorDirective,
-    MessageComponent
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { MessageComponent } from './message/message.component';
     ReactiveFormsModule,
     AppRouteModule
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [ShoppingListService, RecipeService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
