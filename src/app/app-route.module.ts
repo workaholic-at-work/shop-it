@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+
+import { AuthGuard } from './auth/auth-guard.service';
+import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-    { path: '**', redirectTo: '/recipes' }
+    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    {path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthGuard]},
+    {path: 'shoppinglist', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule', canLoad: [AuthGuard]},
+    { path: '**', redirectTo: '' }
 ];
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
     ],
     exports: [
         RouterModule

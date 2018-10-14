@@ -1,7 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RecipesRoutingModule } from './recipes-routing.module';
+import { RecipesRoutingModule } from './recipes-route.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { RecipesComponent } from './recipes.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
@@ -10,6 +9,7 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { SelectRecipeComponent } from './select-recipe/select-recipe.component';
 import { SharedModule } from '../shared/shared.module';
+import { MinlengthValidatorDirective } from '../shared/minlength-validator.directive';
 
 @NgModule({
     declarations: [
@@ -18,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
         RecipeListComponent,
         RecipeItemComponent,
         EditRecipeComponent,
-        SelectRecipeComponent
+        SelectRecipeComponent,
+        MinlengthValidatorDirective
     ],
     imports: [
         SharedModule,

@@ -23,7 +23,7 @@ export class AuthService {
                         .then(
                             (token: string) => {
                                 this.token = token;
-                                this.router.navigate(['\recipes']);
+                                this.router.navigate(['/']);
                             }
                         );
                 }

@@ -1,4 +1,4 @@
-import { AuthRoutingModule } from './auth-touting.module';
+import { AuthRoutingModule } from './auth-route.module';
 import { CommonModule } from '@angular/common';
 import { SigninComponent } from './signin/signin.component';
 import { NgModule } from '@angular/core';
