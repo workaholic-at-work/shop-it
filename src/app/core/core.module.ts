@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './../shared/auth.interceptor';
 import { AppRouteModule } from './../app-route.module';
 import { NgModule } from '@angular/core';
 
@@ -5,10 +6,11 @@ import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { RecipeService } from '../recipes/recipe.service';
 import { AuthService } from '../auth/auth.service';
+import { LoggingInterceptor } from '../shared/logging.interceptor';
 
 @NgModule({
     declarations: [
@@ -27,6 +29,8 @@ import { AuthService } from '../auth/auth.service';
         HttpClientModule,
         SharedModule
     ],
-  providers: [ShoppingListService, RecipeService, AuthService],
+  providers: [ShoppingListService, RecipeService, AuthService
+    , {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}],
 })
 export class CoreModule {}
