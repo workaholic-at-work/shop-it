@@ -1,3 +1,4 @@
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
@@ -7,7 +8,8 @@ import { HomeComponent } from './core/home/home.component';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     {path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthGuard]},
-    {path: 'shoppinglist', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule', canLoad: [AuthGuard]},
+    // {path: 'shoppinglist', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule', canLoad: [AuthGuard]},
+    {path: 'shoppinglist', component: ShoppingListComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
 ];
 @NgModule({

@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { RecipeService } from '../recipes/recipe.service';
 import { AuthService } from '../auth/auth.service';
 import { LoggingInterceptor } from '../shared/logging.interceptor';
@@ -29,7 +28,7 @@ import { LoggingInterceptor } from '../shared/logging.interceptor';
         HttpClientModule,
         SharedModule
     ],
-  providers: [ShoppingListService, RecipeService, AuthService
+  providers: [RecipeService, AuthService
     , {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}],
 })
