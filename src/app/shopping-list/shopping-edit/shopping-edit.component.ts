@@ -3,9 +3,10 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
-import { AppState } from './../store/shopping-list.reducers';
+import { AppState } from '../../app-store/app.reducers';
 import { Ingredient } from '../../shared/ingredient.model';
-import * as ShoppingListActions from '../store/shopping-list.actions';
+import * as ShoppingListActions from '../shopping-list-store/shopping-list.actions';
+
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',

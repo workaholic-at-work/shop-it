@@ -1,10 +1,9 @@
-import { RecipeService } from './../recipe.service';
-import { Ingredient } from './../../shared/ingredient.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic/src/platform_providers';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { Recipe } from '../recipe.model';
+import { RecipeService } from './../recipe.service';
 
 @Component({
   selector: 'app-edit-recipe',

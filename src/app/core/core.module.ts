@@ -1,4 +1,4 @@
-import { AuthInterceptor } from './../shared/auth.interceptor';
+import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AppRouteModule } from './../app-route.module';
 import { NgModule } from '@angular/core';
 

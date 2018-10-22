@@ -1,4 +1,3 @@
-import { AuthGuard } from './../auth/auth-guard.service';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 

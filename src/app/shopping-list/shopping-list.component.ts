@@ -1,11 +1,11 @@
-import { AppState } from './store/shopping-list.reducers';
 import { Observable } from 'rxjs/observable';
 import { Component, OnInit } from '@angular/core';
 
 import { Ingredient } from '../shared/ingredient.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
-import { StartEdit } from './store/shopping-list.actions';
+import { StartEdit } from './shopping-list-store/shopping-list.actions';
+import { AppState } from '../app-store/app.reducers';
 
 
 @Component({

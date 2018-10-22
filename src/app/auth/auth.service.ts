@@ -1,14 +1,22 @@
-import * as firebase from 'firebase';
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { Store } from '@ngrx/store';
+
+import { LoginAction, SetToken, LogoutAction } from './auth-store/auth.actions';
+import { AppState } from '../app-store/app.reducers';
 @Injectable()
 export class AuthService {
-    token: string;
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private store: Store<AppState>) { }
 
     signUp(username: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(username, password)
+            .then(
+                response => {
+                    this.router.navigate(['/signin']);
+                }
+            )
             .catch(
                 error => console.log(error)
             );
@@ -18,11 +26,11 @@ export class AuthService {
         firebase.auth().signInWithEmailAndPassword(username, password)
             .then(
                 response => {
-                    console.log(response);
+                    this.store.dispatch(new LoginAction());
                     firebase.auth().currentUser.getIdToken()
                         .then(
                             (token: string) => {
-                                this.token = token;
+                                this.store.dispatch(new SetToken(token));
                                 this.router.navigate(['/']);
                             }
                         );
@@ -34,20 +42,7 @@ export class AuthService {
 
     logout() {
         firebase.auth().signOut();
-        this.token = null;
+        this.store.dispatch(new LogoutAction());
         this.router.navigate(['/signin']);
     }
-
-    getToken(): string {
-        firebase.auth().currentUser.getIdToken()
-            .then(
-                (token: string) => this.token = token
-            );
-        return this.token;
-    }
-
-    isAuthenticated(): boolean {
-        return this.token != null;
-    }
-
 }

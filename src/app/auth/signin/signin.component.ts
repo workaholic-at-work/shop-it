@@ -1,8 +1,10 @@
+import { DoLogin } from './../auth-store/auth.actions';
+import { NgForm } from '@angular/forms';
+
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import * as firebase from 'firebase';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app-store/app.reducers';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -10,12 +12,12 @@ import * as firebase from 'firebase';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
   }
 
   onSignin(form: NgForm) {
-    this.authService.signIn(form.value.username, form.value.password);
+    this.store.dispatch(new DoLogin(form.value));
   }
 }
