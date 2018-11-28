@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { AuthState } from './auth-store/auth.reducers';
-import { AuthService } from './auth.service';
 import { AppState } from '../app-store/app.reducers';
 
 @Injectable({
@@ -13,10 +12,11 @@ import { AppState } from '../app-store/app.reducers';
 })
 export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
 
-    constructor(private authService: AuthService, private router: Router, private store: Store<AppState>) { }
+    constructor(private router: Router, private store: Store<AppState>) { }
 
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
         return this.store.select('auth').pipe(
+            take(1),
             map(
                 (x: AuthState) => {
                     if (!x.isAuthenticated) {

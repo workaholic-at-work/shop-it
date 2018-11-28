@@ -1,10 +1,9 @@
 import { DoLogin } from './../auth-store/auth.actions';
 import { NgForm } from '@angular/forms';
 
-import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app-store/app.reducers';
+import { AppState } from '../../app-store/app.reducers';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',

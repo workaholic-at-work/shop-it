@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecipeService } from '../recipes/recipe.service';
-import { AuthService } from '../auth/auth.service';
 import { LoggingInterceptor } from '../shared/logging.interceptor';
 
 @NgModule({
@@ -28,7 +27,7 @@ import { LoggingInterceptor } from '../shared/logging.interceptor';
         HttpClientModule,
         SharedModule
     ],
-  providers: [RecipeService, AuthService
+  providers: [RecipeService
     , {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}],
 })
