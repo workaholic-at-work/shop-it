@@ -7,28 +7,28 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RecipeService } from '../recipes/recipe.service';
 import { LoggingInterceptor } from '../shared/logging.interceptor';
 
 @NgModule({
-    declarations: [
-        HeaderComponent,
-        HomeComponent
-    ],
-    imports: [
-        SharedModule,
-        AppRouteModule
-    ],
-    exports: [
-        HomeComponent,
-        HeaderComponent,
-        AppRouteModule,
-        BrowserModule,
-        HttpClientModule,
-        SharedModule
-    ],
-  providers: [RecipeService
-    , {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}],
+	declarations: [
+		HeaderComponent,
+		HomeComponent
+	],
+	imports: [
+		SharedModule,
+		AppRouteModule
+	],
+	exports: [
+		HomeComponent,
+		HeaderComponent,
+		AppRouteModule,
+		BrowserModule,
+		HttpClientModule,
+		SharedModule
+	],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+		{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }
+	],
 })
-export class CoreModule {}
+export class CoreModule { }

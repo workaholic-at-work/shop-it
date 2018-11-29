@@ -5,18 +5,18 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app-store/app.reducers';
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+	selector: 'app-signin',
+	templateUrl: './signin.component.html',
+	styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) { }
+	constructor(private store: Store<AppState>) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  onSignin(form: NgForm) {
-    this.store.dispatch(new DoLogin(form.value));
-  }
+	onSignin(form: NgForm) {
+		this.store.dispatch(new DoLogin(form.value));
+	}
 }

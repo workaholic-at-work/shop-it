@@ -23,6 +23,7 @@ export class AuthEffects {
 				return from(firebase.auth().currentUser.getIdToken());
 			}),
 			mergeMap((token: string) => {
+				this.router.navigate(['/']);
 				return [
 					{
 						type: AuthActions.SIGNUP

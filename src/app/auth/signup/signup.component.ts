@@ -6,19 +6,19 @@ import { AppState } from '../../app-store/app.reducers';
 import { DoSignup } from '../auth-store/auth.actions';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+	selector: 'app-signup',
+	templateUrl: './signup.component.html',
+	styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) { }
+	constructor(private store: Store<AppState>) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  onSignup(form: NgForm) {
-    this.store.dispatch(new DoSignup(form.value));
-  }
+	onSignup(form: NgForm) {
+		this.store.dispatch(new DoSignup(form.value));
+	}
 
 }
